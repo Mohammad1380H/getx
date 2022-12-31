@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx/controller/person_controller.dart';
-import 'package:getx/view/person_screen.dart';
-import 'package:getx/view/person_screen_getBuilder.dart';
-import 'package:getx/view/person_screen_getBuilder_with_unique_id.dart';
-import 'package:getx/view/person_screen_getx.dart';
+import '../controller/person_controller.dart';
 
 // ignore: must_be_immutable
-class MainScreen extends StatelessWidget {
-  MainScreen({super.key});
-  PersonController personController = Get.put(PersonController());
-
+class PersonScreenGetX extends StatelessWidget {
+  const PersonScreenGetX({super.key});
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Obx((() {
+          GetX(
+
+//            init: PersonController(),
+              builder: ((PersonController personController) {
             return Column(
               children: [
                 Text(
@@ -35,17 +31,17 @@ class MainScreen extends StatelessWidget {
           })),
           ElevatedButton(
               onPressed: () {
-                personController.myModel.update((val) {
-                  val!.name = "هادی";
-                  val.family = "مختار";
+                Get.find<PersonController>().myModel.update((val) {
+                  val!.name = "قاسم";
+                  val.family = "شمسی";
                 });
               },
               child: const Icon(Icons.add)),
           ElevatedButton(
               onPressed: () {
-                Get.to(const PersonScreenGetBuilderWithUniqueId());
+                Get.back();
               },
-              child: const Icon(Icons.arrow_forward)),
+              child: const Icon(Icons.arrow_back)),
         ],
       )),
     );

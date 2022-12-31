@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx/controller/person_controller_get_builder_with_unique_id.dart';
 import 'package:getx/view/main_screen.dart';
+import 'package:getx/view/person_screen_getBuilder_with_unique_id.dart';
 
 
 void main() {
@@ -19,6 +21,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home:  MainScreen());
+        home:  const PersonScreenGetBuilderWithUniqueId());
   }
 }
